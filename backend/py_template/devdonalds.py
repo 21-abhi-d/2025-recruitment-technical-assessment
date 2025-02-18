@@ -43,8 +43,16 @@ def parse():
 # [TASK 1] ====================================================================
 # Takes in a recipeName and returns it in a form that 
 def parse_handwriting(recipeName: str) -> Union[str | None]:
-	# TODO: implement me
+	recipeName = recipeName.replace("-", " ").replace("_", " ") # remove whitespace and hyphen
+	recipeName = re.sub("[^a-zA-Z\s]", "", recipeName) # remove special chars
+	recipeName = recipeName.title() # cap every word
+	recipeName = re.sub("\s+", " ", recipeName) # Condense whitspc's
 	return recipeName
+
+# Tests:
+# print(parse_handwriting("meatball"))
+# print(parse_handwriting("Skibidi_spaghetti"))
+# print(parse_handwriting("alpHa alFRedo"))  
 
 
 # [TASK 2] ====================================================================
